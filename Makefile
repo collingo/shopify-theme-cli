@@ -1,7 +1,7 @@
 PWD:=$(shell pwd)
-CNT:=collingo/theme
+IMG:=collingo/shopify_theme
 GEM:=theme
-DIR:=/usr/src
+DIR:=/usr/src/app
 # If the first argument is "theme"...
 ifeq (theme,$(firstword $(MAKECMDGOALS)))
   # use the rest as arguments for "theme"
@@ -13,7 +13,7 @@ endif
 .PHONY: bash theme
 
 bash:
-	docker run -it --rm -v ${PWD}:${DIR} ${CNT} sh
+	docker run -it --rm -v ${PWD}:${DIR} ${IMG} sh
 
 theme:
-	docker run -it --rm -v ${PWD}:${DIR} ${CNT} ${GEM} ${RUN_ARGS}
+	docker run -it --rm -v ${PWD}:${DIR} ${IMG} ${GEM} ${RUN_ARGS}
